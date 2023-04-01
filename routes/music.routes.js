@@ -1,12 +1,26 @@
 const express = require("express");
 const {
-	getMusicList,
 	postNewTrack,
+	getAllTracks,
+	updateTrack,
+	deleteTrack,
 } = require("../controllers/music.controller");
 const musicRoutes = express.Router();
 
-musicRoutes.get("/music", getMusicList);
+// Read
+
+musicRoutes.get("/music", getAllTracks);
+
+// Create
 
 musicRoutes.post("/music", postNewTrack);
+
+// update
+
+musicRoutes.put("/music", updateTrack);
+
+// Delete
+
+musicRoutes.delete("/music", deleteTrack)
 
 module.exports = musicRoutes;

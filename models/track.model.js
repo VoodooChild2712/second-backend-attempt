@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+// Object Model
+
 const MusicModel = new mongoose.Schema({
 	name: {
 		type: String,
