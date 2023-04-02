@@ -13,6 +13,12 @@ const MusicModel = new mongoose.Schema({
 	author: {
 		type: String,
 	},
+	date: {
+		type: String,
+	},
+	file: {
+		type: String,
+	},
 });
 
 module.exports = mongoose.model("music", MusicModel);

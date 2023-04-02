@@ -7,6 +7,8 @@ db();
 
 const app = express();
 
+app.use(express.static("storage"));
+
 app.get("/", (request, response) => {
 	response.json("Home");
 });
