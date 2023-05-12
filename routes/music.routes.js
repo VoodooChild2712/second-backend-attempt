@@ -10,6 +10,7 @@ const {
 	updateTrackById,
 	deleteTrackByID,
 } = require("../controllers/music.controller");
+const {authMiddleware, checkRole} = require("../middlewares/jwt.middleware");
 
 const musicRoutes = express.Router();
 
@@ -47,13 +48,13 @@ musicRoutes.post(
 
 // Read
 
-musicRoutes.get("/music", getAllTracks);
+musicRoutes.get("/music", authMiddleware, getAllTracks);
 
 musicRoutes.get("/music/:id", getTrackById);
 
 // Create
 
-musicRoutes.post("/music", postNewTrack);
+musicRoutes.post("/music", checkRole, postNewTrack);
 
 // Update
 
@@ -62,7 +63,7 @@ musicRoutes.put("/music/:id", updateTrackById);
 
 // Delete
 
-musicRoutes.delete("/music", deleteTrack);
-musicRoutes.delete("/music/:id", deleteTrackByID);
+musicRoutes.delete("/music", checkRole, deleteTrack);
+musicRoutes.delete("/music/:id", checkRole, deleteTrackByID);
 
 module.exports = musicRoutes;

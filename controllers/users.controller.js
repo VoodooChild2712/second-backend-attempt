@@ -1,5 +1,6 @@
 const userModel = require("../models/user.model");
 const bcrypt = require("bcryptjs");
+const { tokenSign } = require("../utilities/generateJsonWT");
 
 const hashPass = (password) => {
 	const salt = bcrypt.genSaltSync(10);
@@ -35,8 +36,13 @@ const loginUserController = async (request, response) => {
 			return response
 				.status(404)
 				.json({ message: "User or password wrong", match: match });
+		} else {
+			const data = {
+				token: await tokenSign(user),
+				user: user,
+			};
+			return response.status(200).json({ message: "Logged in!", data: data });
 		}
-		return response.status(200).json({ message: "Logged in!" });
 	} catch (error) {
 		return response.status(500).json({ message: "Something went wrong" });
 	}

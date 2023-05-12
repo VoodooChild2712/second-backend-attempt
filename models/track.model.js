@@ -5,19 +5,19 @@ const mongoose = require("mongoose");
 const MusicModel = new mongoose.Schema({
 	name: {
 		type: String,
-		require: true,
+		require: true
 	},
 	description: {
-		type: String,
+		type: String
 	},
 	author: {
-		type: String,
+		type: String
 	},
 	date: {
-		type: String,
+		type: String
 	},
 	file: {
-		type: String,
+		type: String
 	},
 });
 
