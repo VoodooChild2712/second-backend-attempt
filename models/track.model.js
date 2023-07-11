@@ -19,6 +19,10 @@ const MusicModel = new mongoose.Schema({
 	file: {
 		type: String
 	},
+	img: {
+		type: String,
+		require: true,
+	}
 });
 
 module.exports = mongoose.model("music", MusicModel);
